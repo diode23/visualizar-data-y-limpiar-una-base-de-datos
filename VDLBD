@@ -1,0 +1,34 @@
+# Importar las bibliotecas necesarias
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Cargar la base de datos (por ejemplo, un archivo CSV)
+df = pd.read_csv('data.csv')
+
+# Visualizar las primeras filas de la base de datos
+print("Primeras filas de la base de datos:")
+print(df.head())
+
+# Verificar la información general de la base de datos
+print("\nInformación general de la base de datos:")
+print(df.info())
+
+# Realizar gráficos para visualizar los datos (por ejemplo, histograma)
+df['columna_numerica'].hist()
+plt.title('Histograma de una columna numérica')
+plt.xlabel('Valores')
+plt.ylabel('Frecuencia')
+plt.show()
+
+# Identificar y manejar valores nulos o duplicados
+print("\nValores nulos por columna:")
+print(df.isnull().sum())
+
+# Eliminar filas con valores nulos
+df_cleaned = df.dropna()
+
+# Eliminar filas duplicadas
+df_cleaned = df_cleaned.drop_duplicates()
+
+# Guardar la base de datos limpia en un nuevo archivo CSV
+df_cleaned.to_csv('data_cleaned.csv', index=False)
